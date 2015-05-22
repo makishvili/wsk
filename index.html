@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge" />
+    <meta name="viewport" content="user-scalable=yes, width=320" />
+
+    <link href="build/main.css" rel="stylesheet">
+    <!--<link href="index.css" rel="stylesheet">-->
+
+    <title>Прототип распознавания голосовой команды активации в Я.Навигаторе</title>
+
+</head>
+<body>
+
+<div id="start" class="hidden">
+    <h2 id="survey-head">Вам предстоит 7 заданий.</h2>
+    <h3 id="task-head" class="hidden">Вы успешно прошли задание.</h3>
+    <ol>
+        <li>Нажмите "Cтарт" для начала задания №<span id="task-next">1</span></li>
+        <li>Когда увидите интерфейс Навигатора, произнесите команду
+            активации:<br/><b id="spotter-cmd">Слушай, Яндекс</b></li>
+        <li>После чего выполняйте подсказки на экране.</li>
+    </ol>
+    <span id="btn">Старт</span>
+</div>
+
+<div id="content" class="hidden">
+    <img src="i/main.jpg" />
+
+    <div class="controls-left">
+        <img src="i/button_map_add_user_point.png" />
+        <br><br>
+        <img src="i/button_map_voice_find.png" />
+    </div>
+
+    <div class="controls-right">
+        <img src="i/button_map_zoom_in.png" />
+        <br><br>
+        <img src="i/button_map_zoom_out.png" />
+    </div>
+
+    <div class="controls-bottom">
+        <img src="i/button_map_find_me.png" />
+    </div>
+
+    <img class="dtp" src="i/dtp.png">
+
+    <div class="bg">
+        <div class="circle"></div>
+        <div class="circle one"></div>
+        <div class="circle two"></div>
+        <div class="circle three"></div>
+
+        <img class="mic" src="i/mic.png">
+        <img class="car" src="i/car.png">
+        <img class="compass" src="i/compass.png">
+
+        <div class="actions">
+            <span class="text speaking">Говорите</span>
+            <span class="text processing">Обработка</span>
+            <span id="custom-cmd" class="text event">"ДТП средний ряд"</span>
+        </div>
+
+        <div class="foot">
+            <span class="text cancel">Отменить</span>
+            <span class="text success">Событие добавлено!</span>
+        </div>
+    </div>
+</div>
+
+
+<div id="finish" class="hidden">
+    <h2>Спасибо. Вы успешно прошли все задания.</h2>
+    <a href="http://ya.ru">Вернуться в панель исследований</a>
+</div>
+<div class="messages" id="messages">
+</div>
+
+<script type="text/javascript" src="build/main.js"></script>
+<!--<script type="text/javascript" src="node_modules/ym/modules.js"></script>-->
+<!--<script type="text/javascript" src="node_modules/inherit/lib/inherit.js"></script>-->
+<!--<script type="text/javascript" src="js/messages.js"></script>-->
+<!--<script type="text/javascript" src="js/y-event-emitter/y-event-emitter.js"></script>-->
+<!--<script type="text/javascript" src="js/webspeechkit-1.0.0.js"></script>-->
+<!--<script type="text/javascript" src="js/webspeechkit-settings.js"></script>-->
+<!--<script type="text/javascript" src="js/dom.js"></script>-->
+<!--<script type="text/javascript" src="js/view.js"></script>-->
+<!--<script type="text/javascript" src="js/wsk-controller.js"></script>-->
+<!--<script type="text/javascript" src="js/page-controller.js"></script>-->
+
+</body>
+</html>

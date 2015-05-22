@@ -1,0 +1,15 @@
+{
+    "preset": "yandex",
+
+    "excludeFiles": [
+        ".git/**",
+        ".enb/**",
+        "build",
+        "node_modules/**",
+        "js/webspeechkit.min.js",
+        "js/webspeechkit-1.0.0.js",
+        "js/webspeechkitWorker.min.js",
+        "js/webspeechkit-settings.js",
+        "js/y-event-emitter/**"
+    ]
+}
