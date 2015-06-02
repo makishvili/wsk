@@ -782,7 +782,8 @@ modules.define(
         provide(Messages);
     });
 
-modules.require(
+modules.define(
+    'page-controller',
     [
         'inherit',
         'wsk-controller',
@@ -790,22 +791,18 @@ modules.require(
         'view'
     ],
     function (
+        provide,
         inherit,
         WskController,
         DOM,
-        View
-    ) {
+        View) {
         var PageController = inherit(DOM, {
             __constructor: function () {
-                this.phrases = [
-                    'Слушай Яндекс',
-                    'Яндекс это я',
-                    'Яндекс ты здесь',
-                    'Ок Гугл',
-                    'Ок Яндекс',
-                    'Привет Яндекс',
-                    'Яндекс'
-                ];
+                if (!window.yaWskPhrases) {
+                    throw new Error('Не заданы фразы активации');
+                }
+
+                this.phrases = window.yaWskPhrases;
                 this.currentPhraseIndex = 0;
 
                 this.view = new View();
@@ -822,18 +819,26 @@ modules.require(
                 this.wsk.on('onDictationEnded', function (text) {
                     this.view.setCustomCommand(text);
                     this._showNextScreen();
+                    this.emit('onDictationEnded', text);
                 }, this);
             },
 
-            _showNextScreen: function (text) {
+            /**
+             *
+             * @param {Number | Null} phraseIndex Порядковый номер команды активации
+             * @returns {String | Null} Текст фразы активации
+             */
+            _showNextScreen: function (phraseIndex) {
                 // Счетчик шагов внутри одного витка исследования
                 if (!this.screen) {
                     this.screen = 1;
                 }
 
+                phraseIndex = phraseIndex || this.currentPhraseIndex;
+
                 switch (this.screen) {
                     case 1:
-                        var phrase = this._getPhrase();
+                        var phrase = this._getPhrase(phraseIndex);
                         // Приложение ждёт, когда пользователь скажет правильную команду  активации
                         this.wsk.runSpotter(phrase);
                         break;
@@ -851,15 +856,21 @@ modules.require(
 
                     case 4:
                         // Пользователь закончил диктовать произвольную команду
-                        setTimeout(function () { this._showNextScreen(); }.bind(this), 1000);
+                        setTimeout(function () {
+                            this._showNextScreen();
+                        }.bind(this), 1000);
                         break;
 
                     case 5:
-                        setTimeout(function () { this._showNextScreen(); }.bind(this), 3000);
+                        setTimeout(function () {
+                            this._showNextScreen();
+                        }.bind(this), 3000);
                         break;
 
                     case 6:
-                        setTimeout(function () { this._startAgain(); }.bind(this), 1500);
+                        setTimeout(function () {
+                            this._startAgain();
+                        }.bind(this), 1500);
                         break;
 
                     default:
@@ -871,7 +882,7 @@ modules.require(
             },
 
             /**
-             * Запускает новый виток исследования или завершает иследование
+             * Запускает новый виток исследования или завершает исследование
              */
             _startAgain: function () {
 
@@ -884,7 +895,7 @@ modules.require(
 
                     // Берем следующую команду активации
                     this.currentPhraseIndex = this.currentPhraseIndex + 1;
-                    var phrase = this._getPhrase();
+                    var phrase = this._getPhrase(this.currentPhraseIndex);
 
                     // Заново рисуем первый экран приложения
                     this.view.showStartPage(phrase, this.currentPhraseIndex);
@@ -894,15 +905,28 @@ modules.require(
             /**
              * Получает команду активации
              *
+             * @param {Number} phraseIndex Порядковый номер команды активации
              * @returns {String}
              */
-            _getPhrase: function () {
-                return this.phrases[this.currentPhraseIndex];
+            _getPhrase: function (phraseIndex) {
+                return this.phrases[phraseIndex];
+            },
+
+            /**
+             *
+             * @param {Number} phraseIndex Порядковый номер команды активации
+             * @returns {String} Текст фразы активации
+             */
+            run: function (phraseIndex) {
+                this._showNextScreen(phraseIndex);
             }
 
         });
 
         var pageController = new PageController();
+        window.yaWsk = pageController;
+
+        provide(pageController);
     }
 );
 
@@ -940,9 +964,6 @@ modules.define(
                 // Контейнер с текущим номером витка исследования
                 this.taskNext = this.byId('task-next');
 
-                // Контейнер для текста с командой активации
-                this.spotterCmd = this.byId('spotter-cmd');
-
                 // Контейнер для текста с произвольной голосовой командой
                 this.customCmd = this.byId('custom-cmd');
 
@@ -967,9 +988,6 @@ modules.define(
                     this.taskNext.innerText = taskIndex + 1;
                     this.removeClass(this.taskHead, 'hidden');
                 }
-
-                // Установливает текст команды активации, чтобы его увидел пользователь.
-                this.spotterCmd.innerText = phrase;
 
                 this.removeClass(this.start, 'hidden');
                 this.removeAllClasses(this.content);

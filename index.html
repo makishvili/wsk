@@ -9,17 +9,59 @@
     <!--<link href="index.css" rel="stylesheet">-->
 
     <title>Прототип распознавания голосовой команды активации в Я.Навигаторе</title>
+    <script>
 
+        // Команды активации
+        window.yaWskPhrases = [
+            'Слушай Яндекс',
+            'Яндекс это я',
+            'Яндекс ты здесь',
+            'Ок Гугл',
+            'Ок Яндекс',
+            'Привет Яндекс',
+            'Яндекс'
+        ];
+
+        /**
+         * Запускает обработку голосовой активации
+         * Получает распознанный текст произвольной команды
+         *
+         * onWskClicked(3) -->  Ждёт команду 'Ок Гугл'
+         *
+         * Так как WebSpeechKit работает асинхронно, функция не может вернуть распознанный текст
+         * Получаем его по подписке, как в примере ниже.
+         * Или в обработчике 'onDictationEnded' можно вызывать некий коллбек. Как вам удобнее.
+         *
+         * @param {Number} index Порядковый номер фразы активации в массиве window.yaWskPhrases
+         */
+        var onWskClicked = function(index) {
+
+            // Дождались, пока зарезолвятся модули
+            window.modules.require(
+                ['page-controller'],
+                function () {
+                    // Запустили обработку команды активации
+                    window.yaWsk.run(index);
+
+                    // Подписываемся на события распознавания произвольной команды
+                    window.yaWsk.on('onDictationEnded', function (recognizedText) {
+                        console.log(recognizedText);
+                        window.yaWsk.recognizedText = recognizedText;
+                    });
+                }
+            );
+        };
+
+    </script>
 </head>
 <body>
 
-<div id="start" class="hidden">
+<div id="start">
     <h2 id="survey-head">Вам предстоит 7 заданий.</h2>
     <h3 id="task-head" class="hidden">Вы успешно прошли задание.</h3>
     <ol>
         <li>Нажмите "Cтарт" для начала задания №<span id="task-next">1</span></li>
-        <li>Когда увидите интерфейс Навигатора, произнесите команду
-            активации:<br/><b id="spotter-cmd">Слушай, Яндекс</b></li>
+        <li>Когда увидите интерфейс Навигатора, произнесите команду активации</li>
         <li>После чего выполняйте подсказки на экране.</li>
     </ol>
     <span id="btn">Старт</span>
