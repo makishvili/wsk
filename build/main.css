@@ -64,10 +64,10 @@ li {
     display: -moz-inline-box;
     display: inline-block;
 
-    height: 400px;
-    border: 1px solid red;
+    height: 100%;
+    border: 5px solid red;
 
-    max-height: 400px;
+    max-height: 700px;
 
     background: url(../i/main.jpg) 0 0 no-repeat;
     background-size: contain;
