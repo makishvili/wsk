@@ -3,7 +3,9 @@ body {
     height:100%;
 }
 
-body {
+#start,
+#Yacontent,
+#finish {
     background-color: #FFFFFF;
     margin: 0;
 
@@ -22,14 +24,6 @@ div {
     width: auto;
     margin: auto;
 }
-
-/*
-h2,
-h3 {
-    font-size: 130%;
-    font-weight: 400;
-}
-*/
 
 ol {
     margin: 1em 0 1.5em;
