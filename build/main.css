@@ -65,7 +65,7 @@ li {
 
     max-height: 700px;
 
-    background: url(i/main.jpg) 0 0 no-repeat;
+    background: url(../i/main.jpg) 0 0 no-repeat;
     background-size: contain;
 }
 
