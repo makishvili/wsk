@@ -20,9 +20,7 @@ body {
 }
 
 div {
-    /*width: 640px;*/
-    height: 100%;
-    max-height: 100%;
+    width: 640px;
     margin: auto;
 }
 
@@ -61,14 +59,24 @@ li {
 #content {
     position: relative;
     overflow: hidden;
+
+    width: auto;
+    height: 100%;
+
+    max-height: 700px;
+
+    background: url(i/main.jpg) 0 0 no-repeat;
+    background-size: contain;
 }
 
 .dtp {
     display: none;
 
     position: absolute;
-    top: 400px;
-    left: 295px;
+    top: 40%;
+    left: 50%;
+
+    width: 3%;
 }
 
 .controls-left,
@@ -82,36 +90,44 @@ li {
     display: none;
 
     position: absolute;
-    width: 120px;
+    width: 4%;
+
+    border: 1px solid red;
+}
+
+.controls-left img,
+.controls-right img,
+.controls-bottom img {
+    width: 100%;
 }
 
 .controls-left {
-    top: 400px;
-    left: 10px;
+    top: 45%;
+    left: 1%;
 }
 
 .controls-right {
-    top: 400px;
-    right: 10px;
+    top: 45%;
+    left: 21%;
 }
 
 .controls-bottom {
     bottom: 10px;
-    right: 10px;
+    left: 21%;
 }
 
 .bg {
     position: absolute;
     bottom: 0;
     left: 0;
-    height: 432px;
+    height: 35%;
     text-align: center;
 
     background: #777 url(../i/bg.png) 0 0 no-repeat;
 }
 
 .bg .foot {
-    height: 90px;
+    height: 15%;
 
     background: rgba(0, 0, 0, 0.3);
 
@@ -124,8 +140,8 @@ li {
 
 .bg .text {
     font-family: Helvetica, Arial, sans-serif;
-    font-size: 36px;
-    line-height: 90px;
+    font-size: 1em;
+    line-height: 2.5em;
     color: #ccc;
 }
 
@@ -139,7 +155,7 @@ li {
 
 .actions {
     position: absolute;
-    bottom: 150px;
+    bottom: 40%;
     left: 0;
     width: 100%;
     text-align: center;
@@ -152,38 +168,37 @@ li {
 
 .circle {
     position: absolute;
-    top: 30px;
+    top: 13%;
     left: 50%;
-    margin-left: -55px;
+    margin-left: -6%;
 
     border: 5px solid #ccc;
     border-radius: 50%;
 
-    width: 100px;
-    height: 100px;
+    width: 10%;
+    height: 26%;
 }
 
 .mic,
 .car,
 .compass {
     position: absolute;
-    top: 50px;
+    top: 20%;
     left: 50%;
+    
+    width: 4%;
+    margin-left : -2%;
 
     display: none;
 }
 
-.mic {
-    margin-left : -24px;
-}
-
 .car {
-    margin-top: 5px;
-    margin-left : -32px;
+    top: 23%;
 }
 
 .compass {
-    margin-left : -11px;
+    width: 3%;
+    top: 16%;
 }
 
 /* Состояния */
@@ -213,7 +228,11 @@ li {
 }
 
 .screen6 .bg {
-    height: 90px;
+    height: 5%;
+}
+
+.screen6 .bg .foot{
+    height: 100%;
 }
 
 .screen6 .bg .cancel {
@@ -235,8 +254,8 @@ li {
 .screen3 .circle.three {
     -webkit-animation: blink 2s linear infinite;
     /* Компенсируем разницу ширин border-ов */
-    top: 34px;
-    margin-left: -51px;
+    top: 15%;
+    margin-left: -5.5%;
 
     border-width: 1px;
 }
