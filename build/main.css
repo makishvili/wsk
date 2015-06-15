@@ -285,6 +285,7 @@ li {
     margin-top: -1px;
 
     border-width: 1px;
+    border-color: red;
 }
 
 .screen3 .circle.two {
