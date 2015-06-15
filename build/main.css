@@ -63,6 +63,8 @@ li {
     display: -moz-inline-box;
     display: inline-block;
 
+    border: 1px solid blue;
+
     background: url(../i/main.jpg) 0 0 no-repeat;
     background-size: contain;
 }
