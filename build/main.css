@@ -281,7 +281,8 @@ li {
     -webkit-animation: blink 2s linear infinite;
     /* Компенсируем разницу ширин border-ов */
     top: 15%;
-    margin-left: -7%;
+    margin-left: -8%;
+    margin-top: -1px;
 
     border-width: 1px;
 }
