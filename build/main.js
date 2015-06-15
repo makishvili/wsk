@@ -964,8 +964,8 @@ modules.define(
             __constructor: function () {
                 this.screen = 0;
 
-                this.start = this.byId('start');
-                this.content = this.byId('content');
+                this.start = this.byClass('.page-wrapper');
+                this.content = this.byId('Yacontent');
                 this.finish = this.byId('finish');
 
                 // Заголовок всего исследования. Виден только на самом первом экране.
@@ -981,8 +981,8 @@ modules.define(
                 this.customCmd = this.byId('custom-cmd');
 
                 // Пользователь начал новый виток исследования
-                this.startButton = this.byId('btn');
-                this.startButton.addEventListener('click', this._onStartButtonClicked.bind(this));
+                //this.startButton = this.byId('btn');
+                //this.startButton.addEventListener('click', this._onStartButtonClicked.bind(this));
             },
 
             /**
