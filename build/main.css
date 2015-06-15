@@ -60,17 +60,20 @@ li {
     position: relative;
     overflow: hidden;
 
-
     display: -moz-inline-box;
     display: inline-block;
 
-    height: 100%;
-    border: 5px solid red;
-
-    max-height: 700px;
-
     background: url(../i/main.jpg) 0 0 no-repeat;
     background-size: contain;
+}
+#content,
+#gap {
+    height: 100%;
+    max-height: 700px;
+}
+
+#gap {
+    opacity: 0;
 }
 
 .dtp {
