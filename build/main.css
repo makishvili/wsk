@@ -200,7 +200,7 @@ li {
     left: 50%;
     
     width: 6%;
-    margin-left: 0%;
+    margin-left: -1%;
 
     display: none;
 }
