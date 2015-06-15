@@ -2,8 +2,6 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <!--<meta name="viewport" content="user-scalable=yes, width=320" />-->
-    <!--<meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=0">-->
     <meta name="viewport" content="maximum-scale=1,initial-scale=1,user-scalable=0">
 
     <link href="build/main.css" rel="stylesheet">
@@ -35,25 +33,22 @@
          *
          * @param {Number} index Порядковый номер фразы активации в массиве window.yaWskPhrases
          */
-        var onWskClicked = function(index, screen) {
+        var onWskClicked = function(index) {
 
             // Дождались, пока зарезолвятся модули
             window.modules.require(
                 ['page-controller'],
                 function () {
 
-                    if (screen) {
-                        window.yaWsk.debug(screen);
-                    } else {
-                        // Запустили обработку команды активации
-                        window.yaWsk.run(index);
+                    // Запустили обработку команды активации
+                    window.yaWsk.run(index);
 
-                        // Подписываемся на события распознавания произвольной команды
-                        window.yaWsk.on('onDictationEnded', function (recognizedText) {
-                            console.log(recognizedText);
-                            window.yaWsk.recognizedText = recognizedText;
-                        });
-                    }
+                    // Подписываемся на события распознавания произвольной команды
+                    window.yaWsk.on('onDictationEnded', function (recognizedText) {
+                        console.log(recognizedText);
+                        window.yaWsk.recognizedText = recognizedText;
+                    });
+
                 }
             );
         };
@@ -136,9 +131,6 @@
 <!--<script type="text/javascript" src="js/view.js"></script>-->
 <!--<script type="text/javascript" src="js/wsk-controller.js"></script>-->
 <!--<script type="text/javascript" src="js/page-controller.js"></script>-->
-<script>
-    onWskClicked(0, 6);
-</script>
 
 </body>
 </html>
