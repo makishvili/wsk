@@ -154,7 +154,7 @@ li {
 .bg .text {
     font-family: Helvetica, Arial, sans-serif;
     font-size: 1em;
-    line-height: 2em;
+    line-height: 2.5em;
     color: #ccc;
 }
 
@@ -256,7 +256,7 @@ li {
 }
 
 .screen6 .bg {
-    height: 5%;
+    height: 2.5em;
 }
 
 .screen6 .bg .foot{
