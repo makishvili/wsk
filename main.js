@@ -967,8 +967,8 @@ modules.define(
                 this.customCmd = this.byId('custom-cmd');
 
                 // Пользователь начал новый виток исследования
-                //this.startButton = this.byId('btn');
-                //this.startButton.addEventListener('click', this._onStartButtonClicked.bind(this));
+                // this.startButton = this.byId('btn');
+                // this.startButton.addEventListener('click', this._onStartButtonClicked.bind(this));
             },
 
             /**
