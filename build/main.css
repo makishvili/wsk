@@ -207,7 +207,7 @@ li {
 .screen2  .controls-left, .screen2  .controls-right, .screen2  .controls-bottom {
     display: block;
 }
-.screen1 .bg {transform: translate(0, 432px);}
+.screen1 .bg {-webkit-transform: translate(0, 432px);}
 
 .screen2 .controls-left {transform: translate(-130px, 0);}
 .screen2 .controls-right {transform: translate(130px, 0)}
