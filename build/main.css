@@ -183,12 +183,12 @@ li {
     position: absolute;
     top: 13%;
     left: 50%;
-    margin-left: -7%;
+    margin-left: -9%;
 
     border: 5px solid #ccc;
     border-radius: 50%;
 
-    width: 15%;
+    width: 16%;
     height: 25%;
 }
 
@@ -196,11 +196,11 @@ li {
 .car,
 .compass {
     position: absolute;
-    top: 21%;
+    top: 22%;
     left: 50%;
     
-    width: 6%;
-    margin-left: -1%;
+    width: 5%;
+    margin-left: -2%;
 
     display: none;
 }
