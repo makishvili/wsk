@@ -135,7 +135,7 @@ li {
     text-align: center;
 
     background: #777 url(../i/bg.png) 0 0 no-repeat;
-    background-size: contain;
+    background-size: cover;
 }
 
 .bg .foot {
