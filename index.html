@@ -35,20 +35,25 @@
          *
          * @param {Number} index Порядковый номер фразы активации в массиве window.yaWskPhrases
          */
-        var onWskClicked = function(index) {
+        var onWskClicked = function(index, screen) {
 
             // Дождались, пока зарезолвятся модули
             window.modules.require(
                 ['page-controller'],
                 function () {
-                    // Запустили обработку команды активации
-                    window.yaWsk.run(index);
 
-                    // Подписываемся на события распознавания произвольной команды
-                    window.yaWsk.on('onDictationEnded', function (recognizedText) {
-                        console.log(recognizedText);
-                        window.yaWsk.recognizedText = recognizedText;
-                    });
+                    if (screen) {
+                        window.yaWsk.debug(screen);
+                    } else {
+                        // Запустили обработку команды активации
+                        window.yaWsk.run(index);
+
+                        // Подписываемся на события распознавания произвольной команды
+                        window.yaWsk.on('onDictationEnded', function (recognizedText) {
+                            console.log(recognizedText);
+                            window.yaWsk.recognizedText = recognizedText;
+                        });
+                    }
                 }
             );
         };
@@ -130,7 +135,7 @@
 <!--<script type="text/javascript" src="js/wsk-controller.js"></script>-->
 <!--<script type="text/javascript" src="js/page-controller.js"></script>-->
 <script>
-    onWskClicked(0);
+    onWskClicked(0, 1);
 </script>
 
 </body>

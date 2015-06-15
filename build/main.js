@@ -828,7 +828,12 @@ modules.define(
              * @param {Number | Null} phraseIndex Порядковый номер команды активации
              * @returns {String | Null} Текст фразы активации
              */
-            _showNextScreen: function (phraseIndex) {
+            _showNextScreen: function (phraseIndex, debugScreen) {
+                if (debugScreen) {
+                    this.view.changeContent(debugScreen);
+                    return '';
+                }
+
                 // Счетчик шагов внутри одного витка исследования
                 if (!this.screen) {
                     this.screen = 1;
@@ -917,8 +922,16 @@ modules.define(
              * @param {Number} phraseIndex Порядковый номер команды активации
              * @returns {String} Текст фразы активации
              */
-            run: function (phraseIndex) {
-                this._showNextScreen(phraseIndex);
+            run: function (phraseIndex, debugScreen) {
+                this._showNextScreen(phraseIndex, debugScreen);
+            },
+
+            /**
+             *
+             * @param {Number} screen Порядковый номер экрана
+             */
+            debug: function (screen) {
+                this._showNextScreen(null, screen);
             }
 
         });
