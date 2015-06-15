@@ -260,7 +260,8 @@ li {
 }
 
 .screen6 .bg .foot{
-    height: 100%;
+    height: 2.5em;
+    border: 1px solid red;
 }
 
 .screen6 .bg .cancel {
