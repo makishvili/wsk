@@ -168,7 +168,7 @@ li {
 
 .actions {
     position: absolute;
-    bottom: 40%;
+    bottom: 35%;
     left: 0;
     width: 100%;
     text-align: center;
@@ -200,7 +200,7 @@ li {
     left: 50%;
     
     width: 6%;
-    margin-left: -2.3%;
+    margin-left: 0%;
 
     display: none;
 }
