@@ -98,7 +98,7 @@ li {
 .controls-left img,
 .controls-right img,
 .controls-bottom img {
-    width: 100%;
+    width: 50px;
 }
 
 .controls-left {
