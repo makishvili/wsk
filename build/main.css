@@ -255,13 +255,9 @@ li {
     display: inline;
 }
 
-.screen6 .bg {
-    height: 2.5em;
-}
-
+.screen6 .bg,
 .screen6 .bg .foot{
     height: 2.5em;
-    border: 1px solid red;
 }
 
 .screen6 .bg .cancel {
