@@ -828,12 +828,7 @@ modules.define(
              * @param {Number | Null} phraseIndex Порядковый номер команды активации
              * @returns {String | Null} Текст фразы активации
              */
-            _showNextScreen: function (phraseIndex, debugScreen) {
-                if (debugScreen) {
-                    this.view.changeContent(debugScreen);
-                    return '';
-                }
-
+            _showNextScreen: function (phraseIndex) {
                 // Счетчик шагов внутри одного витка исследования
                 if (!this.screen) {
                     this.screen = 1;
@@ -922,18 +917,9 @@ modules.define(
              * @param {Number} phraseIndex Порядковый номер команды активации
              * @returns {String} Текст фразы активации
              */
-            run: function (phraseIndex, debugScreen) {
-                this._showNextScreen(phraseIndex, debugScreen);
-            },
-
-            /**
-             *
-             * @param {Number} screen Порядковый номер экрана
-             */
-            debug: function (screen) {
-                this._showNextScreen(null, screen);
+            run: function (phraseIndex) {
+                this._showNextScreen(phraseIndex);
             }
-
         });
 
         var pageController = new PageController();
@@ -981,8 +967,8 @@ modules.define(
                 this.customCmd = this.byId('custom-cmd');
 
                 // Пользователь начал новый виток исследования
-                //this.startButton = this.byId('btn');
-                //this.startButton.addEventListener('click', this._onStartButtonClicked.bind(this));
+                // this.startButton = this.byId('btn');
+                // this.startButton.addEventListener('click', this._onStartButtonClicked.bind(this));
             },
 
             /**
